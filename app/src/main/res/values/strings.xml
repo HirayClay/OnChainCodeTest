@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OnChainCodeTest</string>
+    <string name="token_full_name">token full name</string>
 </resources>
