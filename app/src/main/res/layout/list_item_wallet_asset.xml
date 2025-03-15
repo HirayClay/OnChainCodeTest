@@ -1,68 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_marginHorizontal="@dimen/page_margin">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/page_margin"
+        android:layout_marginVertical="8dp"
+        app:cardCornerRadius="8dp">
 
-        <ImageView
-            android:id="@+id/token_logo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginVertical="8dp"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/token_full_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/ic_launcher" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-
-        <TextView
-            android:id="@+id/token_full_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            app:layout_constraintBottom_toBottomOf="@id/token_logo"
-            app:layout_constraintEnd_toStartOf=""
-            app:layout_constraintStart_toEndOf="@id/token_logo"
-            app:layout_constraintTop_toTopOf="@id/token_logo"
-            tools:text="Bitcoin" />
+            <ImageView
+                android:id="@+id/token_logo"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/token_full_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher" />
 
 
-        <TextView
-            android:id="@+id/token_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toStartOf="@id/token_name"
-            app:layout_constraintTop_toTopOf="@id/token_logo"
-            tools:text="67.87517775" />
-
-        <TextView
-            android:id="@+id/token_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/token_logo"
-            tools:text="BTC" />
-
-        <TextView
-            android:id="@+id/token_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/token_logo"
-            app:layout_constraintEnd_toEndOf="@id/token_name"
-            tools:text="$ 18.20" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/token_full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/token_logo"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintEnd_toStartOf="@id/end_barrier"
+                app:layout_constraintStart_toEndOf="@id/token_logo"
+                app:layout_constraintTop_toTopOf="@id/token_logo"
+                tools:text="Bitcoin" />
 
 
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/token_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@id/token_name"
+                app:layout_constraintTop_toTopOf="@id/token_logo"
+                tools:text="67.87517775" />
+
+            <TextView
+                android:id="@+id/token_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/token_logo"
+                tools:text="BTC" />
+
+            <TextView
+                android:id="@+id/token_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/token_logo"
+                app:layout_constraintEnd_toEndOf="@id/token_name"
+                tools:text="$ 18.20" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/end_barrier"
+                android:layout_width="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="token_amount,token_value" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>
