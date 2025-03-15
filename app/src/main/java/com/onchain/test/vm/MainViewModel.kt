@@ -4,8 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.onchain.test.data.repo.WalletRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel : ViewModel() {
@@ -33,6 +35,6 @@ class MainViewModel : ViewModel() {
             }
             balanceValueLiveData.postValue(balanceSum.toPlainString().plus(valueSymbol))
             return@combine assets.sortedByDescending { it.tokenValue }
-        }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+        }.flowOn(Dispatchers.IO).stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
 }
