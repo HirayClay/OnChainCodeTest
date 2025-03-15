@@ -24,6 +24,9 @@ data class AssetBalanceItem(
     var tokenValue: BigDecimal = BigDecimal.ZERO
 
     @Transient
+    var valueSymbol:String = ""
+
+    @Transient
     var currencyInfo: Currency? = null
 
     fun calcValue(rate: BigDecimal) {
