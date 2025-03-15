@@ -1,10 +1,8 @@
 package com.onchain.test.vm
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.onchain.test.data.model.AssetBalanceItem
 import com.onchain.test.data.repo.WalletRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -29,11 +27,12 @@ class MainViewModel : ViewModel() {
                     currencyRate.rates.first { asset.currencyName == it.fromCurrency && it.toCurrency == valueSymbol }
                 val currencyInfo = currencies.find { it.coinId == asset.currencyName }
                 asset.currencyInfo = currencyInfo
+                asset.valueSymbol = valueSymbol
                 asset.calcValue(rate.rateMultiplier)
                 asset.tokenValue
             }
             balanceValueLiveData.postValue(balanceSum.toPlainString().plus(valueSymbol))
-            return@combine assets
+            return@combine assets.sortedByDescending { it.tokenValue }
         }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
 }
