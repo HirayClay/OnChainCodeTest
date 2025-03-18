@@ -34,12 +34,12 @@ data class Rate(
 data class ExChangeRate(val amount: String, val rate: String)
 
 fun safeDivide(
-    divider: String,
+    dividend: String,
     divisor: String,
     defaultResult: BigDecimal = BigDecimal.ZERO
 ): BigDecimal {
     try {
-        return divider.toBigDecimal()
+        return dividend.toBigDecimal()
             .divide(divisor.toBigDecimal(), 15, RoundingMode.DOWN)
 
     } catch (e: Exception) {
